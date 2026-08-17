@@ -1,8 +1,5 @@
-<h1 align="center">future biomedical engineer, larping on GitHub 🇭🇳</h1>
-
 <p align="center">
-  I know some computer stuff, and some medical stuff.<br/>
-  🦓 hEDS
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&pause=1000&color=58A6FF&center=true&vCenter=true&width=600&lines=future+biomedical+engineer%2C+larping+on+GitHub+%F0%9F%87%AD%F0%9F%87%B3;some+computer+stuff%2C+some+medical+stuff;%F0%9F%A6%93+hEDS" alt="intro" />
 </p>
 
 <br/>
