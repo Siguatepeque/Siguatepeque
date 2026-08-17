@@ -21,8 +21,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           filename: profile/metrics.svg
           base: header
-          plugin_languages: yes
-          plugin_languages_limit: 6
 
       - uses: actions/setup-python@v5
         with:
