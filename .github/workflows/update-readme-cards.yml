@@ -34,6 +34,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python .github/scripts/gen_top_langs.py
 
+      - name: Generate streak card
+        run: python .github/scripts/gen_streak.py
+
       - name: Generate terminal GIF
         run: python .github/scripts/gen_profile_gif.py
 
@@ -43,7 +46,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add profile/top-langs.svg output.gif
+          git add profile/top-langs.svg profile/streak.svg output.gif
           if git diff --cached --quiet; then
             echo "profile assets are unchanged."
             exit 0

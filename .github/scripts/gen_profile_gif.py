@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 """Generate the terminal boot GIF for the profile README (gifos / github-readme-terminal).
 
-Deterministic: fixed speeds + seeded RNG so CI regen produces byte-identical output.
-Writes ~/.config/gifos/ TOMLs before importing gifos (config picked up at import time).
+Widescreen (640x264, ~2.4:1) so it reads as a terminal window, ~10s at 14 fps,
+plays ONCE and settles on the final frame. Sequence: boot banner + progress bar,
+whoami, neofetch, cat future.txt, exit. Deterministic (seeded RNG, fixed speeds)
+so CI regeneration is byte-identical.
+
+Writes ~/.config/gifos/ TOMLs before importing gifos (config read at import time).
 Output: ./output.gif in the repo root (CWD must be repo root).
 """
 import os
@@ -24,7 +28,7 @@ cursor = "_"
 show_cursor = true
 blink_cursor = true
 user_name = "siguatepeque"
-fps = 24
+fps = 14
 color_scheme = "hn"
 
 [files]
@@ -69,15 +73,12 @@ random.seed(7)
 import gifos.gifos as _gifos_mod
 from PIL import Image
 
-# capture every rendered frame (they are chained in memory) and bypass the
-# ffmpeg-based gen_gif (its quoting breaks on Windows cmd; PIL is deterministic
-# and has zero external deps)
+# capture a COPY of every rendered frame (the lib mutates and returns the same
+# object) and bypass its ffmpeg-based gen_gif (broken quoting on Windows).
 _frames: list = []
 
 
 def _patched_gen_frame(self, frame=None):
-    """Same chaining as the original, but snapshot a COPY of each state and
-    skip the per-frame PNG writes (they were only for ffmpeg's benefit)."""
     if frame is None:  # fresh frame
         frame = Image.new(
             "RGB", (self._Terminal__width, self._Terminal__height), self._Terminal__bg_color
@@ -97,56 +98,67 @@ from gifos.gifos import Terminal  # noqa: E402  (config must exist first)
 
 G = "\\x1b[92m"   # bright green
 Y = "\\x1b[93m"   # bright yellow
+R = "\\x1b[91m"   # bright red
+D = "\\x1b[90m"   # bright black (dim)
 W = "\\x1b[0m"    # reset
 
-HOLD = 9      # frames of stillness after a block
-TAIL = 18     # final hold
-SPEED = 2     # typing speed (frames per char)
-
-t = Terminal(width=360, height=240, xpad=6, ypad=6)
-t.set_fps(24)
+t = Terminal(width=640, height=264, xpad=14, ypad=12)
+t.set_fps(14)
 t.set_prompt(f"{G}siguatepeque{W}@{Y}github{W}:~$ ")
 
-# -- $ whoami ---------------------------------------------------------------
+SPEED = 3  # typing speed: frames per char
+
+# -- boot ---------------------------------------------------------------------
+t.gen_text(f"{D}booting siguatepeque@github ...{W}", 1)
+t.gen_text(f"[{G}#################{W}------------------] 50%", 2)
+t.gen_text(f"{D}kernel: hEDS 1.0 (running on vibes){W}", 3)
+t.gen_text(f"{D}mounting /home/siguatepeque ... {G}done{W}", 4)
+t.gen_text(f"{D}starting network services ... {G}done{W}", 5)
+t.clone_frame(12)
+
+# -- scroll to a clean slate --------------------------------------------------
+t.scroll_up(6)
+
+# -- $ whoami -----------------------------------------------------------------
 t.gen_prompt(1)
 t.gen_typing_text("whoami", 1, contin=True, speed=SPEED)
 t.gen_text(f"{G}siguatepeque{W}", 2, count=3)
+t.clone_frame(4)
 
-# -- $ neofetch --------------------------------------------------------------
+# -- $ neofetch ---------------------------------------------------------------
 t.gen_prompt(3)
 t.gen_typing_text("neofetch", 3, contin=True, speed=SPEED)
 t.gen_text([
-    "  user      " + G + "siguatepeque" + W,
-    "  location  honduras",
-    "  age       20",
-    "  condition hEDS",
-    "  bio       some computer stuff,",
-    "            some medical stuff",
+    f"{G}~~~~~~{W}        siguatepeque@github",
+    f"{G}~    ~{W}        -------------------",
+    f"{G}~~~~~~{W}        os:     honduras",
+    "                age:    20",
+    "                cond:   hEDS",
+    "                bio:    some computer stuff,",
+    "                        some medical stuff",
     "",
-    '  "' + G + "future biomedical eng," + W,
-    "   larping on github" + '"',
 ], 4)
-t.clone_frame(HOLD)
+t.clone_frame(18)
 
-# -- $ ls projects/ ----------------------------------------------------------
-t.scroll_up(12)
+# -- $ cat future.txt ---------------------------------------------------------
+t.scroll_up(10)
 t.gen_prompt(1)
-t.gen_typing_text("ls projects/", 1, contin=True, speed=SPEED)
+t.gen_typing_text("cat future.txt", 1, contin=True, speed=SPEED)
 t.gen_text([
-    "  " + G + "heds-biomarker-discovery" + W + "   [" + Y + "python" + W + "]",
-    "  " + G + "detector-caidas" + W + "            [" + Y + "js" + W + "]",
-    "  " + G + "girlfriend-day-emily" + W + "       [" + Y + "js" + W + "]",
-], 2)
-t.clone_frame(HOLD)
+    f"{G}future biomedical eng,{W}",
+    f"{G}larping on github{W}",
+], 2, count=2)
+t.clone_frame(14)
 
-# -- $ exit ------------------------------------------------------------------
+# -- $ exit -------------------------------------------------------------------
 t.scroll_up(5)
 t.gen_prompt(1)
 t.gen_typing_text("exit", 1, contin=True, speed=SPEED)
-t.gen_text(f"{Y}connection closed.{W}", 2, count=4)
-t.clone_frame(TAIL)
+t.gen_text(f"{Y}connection closed.{W}", 2, count=6)
+t.clone_frame(40)
 
-fps = 24
+# -- assemble GIF: play once (loop=1), settle on the last frame ----------------
+fps = 14
 duration_ms = max(2, round(1000 / fps))
 pal = [f.convert("P", palette=Image.ADAPTIVE, colors=16) for f in _frames]
 pal[0].save(
@@ -154,9 +166,9 @@ pal[0].save(
     save_all=True,
     append_images=pal[1:],
     duration=duration_ms,
-    loop=0,
+    loop=1,
     optimize=False,
     disposal=2,
 )
 size = os.path.getsize("output.gif")
-print(f"output.gif generated: {len(pal)} frames, {size} bytes, ~{len(pal)/fps:.1f}s")
+print(f"output.gif generated: {len(pal)} frames, {size} bytes, ~{len(pal)/fps:.1f}s, loop=1")
