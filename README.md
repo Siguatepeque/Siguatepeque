@@ -20,10 +20,10 @@
 
 <p align="center">
   <a href="https://github.com/Siguatepeque/detector-caidas">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Siguatepeque&repo=detector-caidas&theme=radical&hide_border=true" alt="detector-caidas" />
+    <img src="./profile/pin-detector-caidas.svg" alt="detector-caidas" />
   </a>
   <a href="https://github.com/Siguatepeque/heds-biomarker-discovery">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Siguatepeque&repo=heds-biomarker-discovery&theme=radical&hide_border=true" alt="heds-biomarker-discovery" />
+    <img src="./profile/pin-heds-biomarker-discovery.svg" alt="heds-biomarker-discovery" />
   </a>
 </p>
 
@@ -32,8 +32,8 @@
 ### 📊 Stats
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Siguatepeque&show_icons=true&theme=radical&hide_border=true" alt="GitHub stats" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Siguatepeque&layout=compact&theme=radical&hide_border=true" alt="Top languages" />
+  <img src="./profile/stats.svg" alt="GitHub stats" />
+  <img src="./profile/top-langs.svg" alt="Top languages" />
 </p>
 
 <p align="center">
