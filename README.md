@@ -12,8 +12,8 @@ Future biomedical engineer larping on GitHub.
 
 <br>
 
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=Siguatepeque&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="GitHub stats" />
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Siguatepeque&layout=compact&theme=tokyonight&hide_border=true" alt="Top languages" />
+<img height="165" src="./profile/stats.svg" alt="GitHub stats" />
+<img height="165" src="./profile/top-langs.svg" alt="Top languages" />
 
 <img src="https://streak-stats.demolab.com/?user=Siguatepeque&theme=tokyonight&hide_border=true" alt="GitHub streak" />
 
