@@ -30,6 +30,7 @@ jobs:
           base: ""
           plugin_languages: yes
           plugin_languages_indepth: yes
+          commits_authoring: Siguatepeque, Allan, allandev@users.noreply.github.com
 
       - name: Commit cards
         run: |
