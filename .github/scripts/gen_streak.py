@@ -108,7 +108,7 @@ def main():
     now = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     MONO = "ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace"
     width = 440
-    height = 158
+    height = 168
     svg = (
         f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" '
         'xmlns="http://www.w3.org/2000/svg" role="img" '
@@ -119,17 +119,18 @@ def main():
         '<circle cx="28" cy="24" r="5" fill="#f85149"/>'
         '<circle cx="44" cy="24" r="5" fill="#d29922"/>'
         '<circle cx="60" cy="24" r="5" fill="#7ee787"/>'
-        f'<text x="80" y="28" font-family="{MONO}" font-size="13" fill="#7ee787">$ git log --streak</text>'
+        f'<text x="80" y="28" font-family="{MONO}" font-size="13" fill="#7ee787">~/activity — streak</text>'
         f'<line x1="20" y1="42" x2="{width-20}" y2="42" stroke="#21262d"/>'
-        # big current streak with flame
-        f'<text x="20" y="98" font-family="{MONO}" font-size="52" font-weight="700" fill="#7ee787">{cur}</text>'
-        f'<text x="{20 + 62 + max(0, len(str(cur))-1)*30}" y="98" font-family="{MONO}" font-size="13" fill="#8b949e">days on fire</text>'
+        # big current streak
+        f'<text x="20" y="102" font-family="{MONO}" font-size="52" font-weight="700" fill="#7ee787">{cur}</text>'
+        f'<text x="{20 + 62 + max(0, len(str(cur))-1)*30}" y="102" font-family="{MONO}" font-size="13" fill="#8b949e">days on fire</text>'
         # stats column
-        f'<text x="230" y="72" font-family="{MONO}" font-size="12" fill="#8b949e">longest</text>'
-        f'<text x="230" y="94" font-family="{MONO}" font-size="26" font-weight="700" fill="#c9d1d9">{longest}<tspan font-size="12" fill="#8b949e"> d</tspan></text>'
-        f'<text x="320" y="72" font-family="{MONO}" font-size="12" fill="#8b949e">tracked</text>'
-        f'<text x="320" y="94" font-family="{MONO}" font-size="26" font-weight="700" fill="#c9d1d9">{days_total}<tspan font-size="12" fill="#8b949e"> d</tspan></text>'
-        f'<text x="20" y="{height-14}" font-family="{MONO}" font-size="10" fill="#484f58">updated {esc(now)} · self-hosted, no third-party service</text>'
+        f'<text x="230" y="76" font-family="{MONO}" font-size="12" fill="#8b949e">longest</text>'
+        f'<text x="230" y="98" font-family="{MONO}" font-size="26" font-weight="700" fill="#c9d1d9">{longest}<tspan font-size="12" fill="#8b949e"> d</tspan></text>'
+        f'<text x="320" y="76" font-family="{MONO}" font-size="12" fill="#8b949e">tracked</text>'
+        f'<text x="320" y="98" font-family="{MONO}" font-size="26" font-weight="700" fill="#c9d1d9">{days_total}<tspan font-size="12" fill="#8b949e"> d</tspan></text>'
+        f'<line x1="20" y1="128" x2="{width-20}" y2="128" stroke="#21262d"/>'
+        f'<text x="20" y="{height-16}" font-family="{MONO}" font-size="10" fill="#484f58">updated {esc(now)} · self-hosted</text>'
         "</svg>"
     )
     pathlib.Path("profile").mkdir(exist_ok=True)

@@ -16,7 +16,7 @@
 
 <!-- ═══════════════ live repo index: clickable, zero hardcoding ═══════════════ -->
 <p align="center">
-  <img src="./profile/repo-index.svg" alt="live repository index — rebuilt daily, nothing hardcoded" width="720" />
+  <img src="./profile/repo-index.svg" alt="live repository index" width="720" />
 </p>
 
 <!-- ═══════════════ the snake easter egg ═══════════════ -->

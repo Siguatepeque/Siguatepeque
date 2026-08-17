@@ -117,7 +117,7 @@ def main():
         '<circle cx="28" cy="24" r="5" fill="#f85149"/>'
         '<circle cx="44" cy="24" r="5" fill="#d29922"/>'
         '<circle cx="60" cy="24" r="5" fill="#7ee787"/>'
-        f'<text x="80" y="28" font-family="{MONO}" font-size="13" fill="#7ee787">$ tokei --languages</text>'
+        f'<text x="80" y="28" font-family="{MONO}" font-size="13" fill="#7ee787">~/activity — languages</text>'
         f'<line x1="20" y1="42" x2="{width-20}" y2="42" stroke="#21262d"/>'
         + "".join(segs)
         + "".join(legend)

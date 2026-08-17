@@ -1,16 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="720" height="256" viewBox="0 0 720 256" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="220" viewBox="0 0 720 220" role="img" aria-labelledby="t d">
 <title id="t">Live repository index</title>
 <desc id="d">Auto-generated list of public repositories, newest activity first.</desc>
-<rect width="720" height="256" rx="10" fill="#010409" stroke="#30363d"/>
+<rect width="720" height="220" rx="10" fill="#010409" stroke="#30363d"/>
 <circle cx="26" cy="24" r="5" fill="#f85149"/>
 <circle cx="42" cy="24" r="5" fill="#d29922"/>
 <circle cx="58" cy="24" r="5" fill="#7ee787"/>
-<text x="80" y="29" font-family="ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace" font-size="13" fill="#7ee787">$ ls -la --sort=activity</text>
+<text x="80" y="29" font-family="ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace" font-size="13" fill="#7ee787">~/activity — repositories</text>
 <line x1="18" y1="42" x2="702" y2="42" stroke="#21262d"/>
 <text x="18" y="58" font-family="ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace" font-size="11" fill="#8b949e">name</text>
 <text x="702" y="58" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace" font-size="11" fill="#8b949e">lang · ★ · pushed</text>
 <a href="https://github.com/Siguatepeque/heds-biomarker-discovery" target="_blank">
-  <rect x="12" y="60" width="696" height="42" rx="6" fill="#0d1117" opacity="0.55"/>
   <text x="18" y="78" font-family="ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace" font-size="14" fill="#58a6ff">heds-biomarker-discovery</text>
   <text x="18" y="95" font-family="ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace" font-size="11" fill="#8b949e">Literature-discovery pipeline mining PubMed to rank overlooked hEDS gene…</text>
 </a>
@@ -18,7 +17,6 @@
 <text x="564" y="78" font-family="ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace" font-size="12" fill="#c9d1d9">Python</text>
 <text x="702" y="78" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace" font-size="12" fill="#d29922">★0 <tspan fill="#8b949e">2026-08-17</tspan></text>
 <a href="https://github.com/Siguatepeque/girlfriend-day-emily" target="_blank">
-  <rect x="12" y="106" width="696" height="42" rx="6" fill="#0d1117" opacity="0.55"/>
   <text x="18" y="124" font-family="ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace" font-size="14" fill="#58a6ff">girlfriend-day-emily</text>
   <text x="18" y="141" font-family="ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace" font-size="11" fill="#8b949e">An interactive manuscript whose prose wraps around a moving quill, butter…</text>
 </a>
@@ -26,12 +24,10 @@
 <text x="564" y="124" font-family="ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace" font-size="12" fill="#c9d1d9">JavaScript</text>
 <text x="702" y="124" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace" font-size="12" fill="#d29922">★0 <tspan fill="#8b949e">2026-08-02</tspan></text>
 <a href="https://github.com/Siguatepeque/detector-caidas" target="_blank">
-  <rect x="12" y="152" width="696" height="42" rx="6" fill="#0d1117" opacity="0.55"/>
   <text x="18" y="170" font-family="ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace" font-size="14" fill="#58a6ff">detector-caidas</text>
   <text x="18" y="187" font-family="ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace" font-size="11" fill="#8b949e">Static web app for browser-based fall detection using the DeviceMotion AP…</text>
 </a>
 <circle cx="552" cy="166" r="5" fill="#f1e05a"/>
 <text x="564" y="170" font-family="ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace" font-size="12" fill="#c9d1d9">JavaScript</text>
 <text x="702" y="170" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace" font-size="12" fill="#d29922">★0 <tspan fill="#8b949e">2026-07-31</tspan></text>
-<text x="360.0" y="246" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace" font-size="10" fill="#484f58">rebuilt daily by github actions · no projects hardcoded</text>
 </svg>
