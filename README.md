@@ -8,7 +8,7 @@
 
 </div>
 
-Future biomedical master, currently larping on GitHub. Code gets treated like lab equipment here — built to mine a signal, not to pass a linter.
+Future Biomedical Engineer Master, larping in GitHub.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="profile/divider-dark.svg">
