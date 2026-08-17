@@ -1,41 +1,62 @@
 <div align="center">
 
-# Hey, I'm Siguatepeque 👋
-
-### Future Biomedical Master, larping in GitHub 🧬💻
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="profile/hero-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="profile/hero-light.svg">
+  <img src="profile/hero-dark.svg" alt="SIGUATEPEQUE — Biomedical Field Terminal. Code is lab equipment." width="100%">
+</picture>
 
 </div>
 
-<br>
+Future biomedical master, currently larping on GitHub. Code gets treated like lab equipment here — built to mine a signal, not to pass a linter.
 
-### 🛠️ Stack
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="profile/divider-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="profile/divider-light.svg">
+  <img src="profile/divider-dark.svg" alt="" width="100%">
+</picture>
 
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+```
+OPERATING PARAMETERS
+──────────────────────────────────────────────────────────
+  SIGNAL DOMAINS     literature mining · biosignal processing
+                     · finite-state modeling
 
-<br>
+  INSTRUMENTATION    python · javascript · public biomedical
+                     data
 
-### 📌 Featured Projects
+  STANDING QUESTION  which overlooked genes, motions, or
+                     folk claims are actually testable?
 
-<p align="center">
-  <a href="https://github.com/Siguatepeque/detector-caidas">
-    <img src="./profile/pin-detector-caidas.svg" alt="detector-caidas" />
-  </a>
-  <a href="https://github.com/Siguatepeque/heds-biomarker-discovery">
-    <img src="./profile/pin-heds-biomarker-discovery.svg" alt="heds-biomarker-discovery" />
-  </a>
-</p>
+  MODE               curious · slow · unglamorous
+──────────────────────────────────────────────────────────
+```
 
-<br>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="profile/divider-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="profile/divider-light.svg">
+  <img src="profile/divider-dark.svg" alt="" width="100%">
+</picture>
 
-### 📊 Stats
+<!-- ACTIVE_LOG:START -->
+<pre>
+&gt; ACTIVE_LOG ───────────────────────────────────────────
+  <a href="https://github.com/Siguatepeque/heds-biomarker-discovery"><b>heds-biomarker-discovery</b></a>  [python]
+      Literature-discovery pipeline mining PubMed t…
+      last signal 17 Aug
+────────────────────────────────────────────────────────
+  STATUS  1 experiment running
+</pre>
+<!-- ACTIVE_LOG:END -->
 
-<p align="center">
-  <img src="./profile/stats.svg" alt="GitHub stats" />
-  <img src="./profile/top-langs.svg" alt="Top languages" />
-</p>
+<details>
+<summary>FIELD NOTES — expand archive</summary>
 
-<p align="center">
-  <img src="https://streak-stats.demolab.com/?user=Siguatepeque&theme=radical&hide_border=true" alt="GitHub streak" />
-</p>
+- public datasets treated as primary sources, not decoration
+- human signals: motion, rhythm, anything a sensor can log
+- literature mining as a way to find what everyone else skipped
+- folklore and offhand claims, tested rather than dismissed
+
+</details>
+
+<sub>— signal logged. the terminal stays on.</sub>
