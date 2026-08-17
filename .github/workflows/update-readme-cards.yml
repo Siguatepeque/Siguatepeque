@@ -22,20 +22,6 @@ jobs:
           filename: profile/metrics.svg
           base: header
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Generate terminal bio gif
-        env:
-          GIFOS_GENERAL_USER_NAME: ${{ github.repository_owner }}
-        run: |
-          sudo apt-get update && sudo apt-get install -y ffmpeg
-          pip install github-readme-terminal
-          mkdir -p profile
-          python .github/scripts/gen_terminal.py
-          mv output.gif profile/terminal.gif
-
       - name: Generate top languages card (light)
         uses: stats-organization/github-readme-stats-action@v2
         with:
@@ -56,6 +42,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add profile/*.svg profile/*.gif
+          git add profile/*.svg
           git commit -m "Update README cards" || exit 0
           git push
