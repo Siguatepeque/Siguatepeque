@@ -16,21 +16,11 @@ Future Biomedical Engineer Master, larping in GitHub.
   <img src="profile/divider-dark.svg" alt="" width="100%">
 </picture>
 
-```
-OPERATING PARAMETERS
-──────────────────────────────────────────────────────────
-  SIGNAL DOMAINS     literature mining · biosignal processing
-                     · finite-state modeling
-
-  INSTRUMENTATION    python · javascript · public biomedical
-                     data
-
-  STANDING QUESTION  which overlooked genes, motions, or
-                     folk claims are actually testable?
-
-  MODE               curious · slow · unglamorous
-──────────────────────────────────────────────────────────
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="profile/signal-bank-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="profile/signal-bank-light.svg">
+  <img src="profile/signal-bank-dark.svg" alt="Three-channel signal bank: CH.1 literature mining as a dense irregular trace, CH.2 biosignal processing as a double heartbeat waveform, CH.3 finite-state modeling as a stepped square wave." width="100%">
+</picture>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="profile/divider-dark.svg">
@@ -48,15 +38,5 @@ OPERATING PARAMETERS
   STATUS  1 experiment running
 </pre>
 <!-- ACTIVE_LOG:END -->
-
-<details>
-<summary>FIELD NOTES — expand archive</summary>
-
-- public datasets treated as primary sources, not decoration
-- human signals: motion, rhythm, anything a sensor can log
-- literature mining as a way to find what everyone else skipped
-- folklore and offhand claims, tested rather than dismissed
-
-</details>
 
 <sub>— signal logged. the terminal stays on.</sub>

@@ -1,0 +1,34 @@
+<svg viewBox="0 0 900 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sb-d-title sb-d-desc">
+  <title id="sb-d-title">Signal bank — three working channels</title>
+  <desc id="sb-d-desc">Dark instrument panel with three oscilloscope channels: CH.1 literature mining as a dense irregular trace, CH.2 biosignal processing as a double heartbeat waveform, CH.3 finite-state modeling as a stepped square wave.</desc>
+
+  <rect x="1" y="1" width="898" height="208" rx="10" fill="#14100c" stroke="#3a332a" stroke-width="2"/>
+  <rect x="15" y="15" width="870" height="180" rx="6" fill="#181310" stroke="#2b241c" stroke-width="1"/>
+  <circle cx="27" cy="27" r="2.5" fill="#4a4032"/>
+  <circle cx="873" cy="27" r="2.5" fill="#4a4032"/>
+  <circle cx="27" cy="183" r="2.5" fill="#4a4032"/>
+  <circle cx="873" cy="183" r="2.5" fill="#4a4032"/>
+
+  <line x1="40" y1="72" x2="860" y2="72" stroke="#241d15" stroke-width="1"/>
+  <line x1="40" y1="122" x2="860" y2="122" stroke="#241d15" stroke-width="1"/>
+
+  <!-- CH.1 — literature mining: dense, irregular, high-frequency (searching through noise) -->
+  <circle cx="46" cy="45" r="3.5" fill="#6fd6e0"/>
+  <text x="58" y="49" font-family="ui-monospace, 'Cascadia Code', 'Courier New', monospace" font-size="10" letter-spacing="2" fill="#8a7c5c">CH.1</text>
+  <text x="94" y="49" font-family="ui-monospace, 'Cascadia Code', 'Courier New', monospace" font-size="13" font-weight="700" letter-spacing="1" fill="#ffbf5c">LITERATURE MINING</text>
+  <polyline points="290,45 347,36 404,50 461,33 518,48 575,40 632,51 689,34 746,42 803,35 860,45" fill="none" stroke="#6fd6e0" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- CH.2 — biosignal processing: double heartbeat trace -->
+  <circle cx="46" cy="97" r="3.5" fill="#6fd6e0"/>
+  <text x="58" y="101" font-family="ui-monospace, 'Cascadia Code', 'Courier New', monospace" font-size="10" letter-spacing="2" fill="#8a7c5c">CH.2</text>
+  <text x="94" y="101" font-family="ui-monospace, 'Cascadia Code', 'Courier New', monospace" font-size="13" font-weight="700" letter-spacing="1" fill="#ffbf5c">BIOSIGNAL PROCESSING</text>
+  <polyline points="290,97 330,97 345,93 360,97 375,100 385,81 395,105 410,97 430,92 450,97 575,97 615,97 630,93 645,97 660,100 670,81 680,105 695,97 715,92 735,97 860,97" fill="none" stroke="#6fd6e0" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- CH.3 — finite-state modeling: discrete stepped states -->
+  <circle cx="46" cy="149" r="3.5" fill="#6fd6e0"/>
+  <text x="58" y="153" font-family="ui-monospace, 'Cascadia Code', 'Courier New', monospace" font-size="10" letter-spacing="2" fill="#8a7c5c">CH.3</text>
+  <text x="94" y="153" font-family="ui-monospace, 'Cascadia Code', 'Courier New', monospace" font-size="13" font-weight="700" letter-spacing="1" fill="#ffbf5c">FINITE-STATE MODELING</text>
+  <polyline points="290,137 430,137 430,161 540,161 540,149 680,149 680,161 860,161" fill="none" stroke="#6fd6e0" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <text x="860" y="196" text-anchor="end" font-family="ui-monospace, 'Cascadia Code', 'Courier New', monospace" font-size="10" letter-spacing="2" fill="#6f6350">3 CHANNELS — ALL ENGAGED</text>
+</svg>
