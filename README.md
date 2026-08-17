@@ -2,7 +2,7 @@
 
 # Siguatepeque
 
-Future biomedical engineer — larping on GitHub.
+Future biomedical engineer larping on GitHub.
 
 ![Python](https://skillicons.dev/icons?i=python)
 ![JavaScript](https://skillicons.dev/icons?i=js)
