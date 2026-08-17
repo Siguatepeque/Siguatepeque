@@ -12,7 +12,11 @@ Future biomedical engineer larping on GitHub.
 
 <br>
 
-<img height="165" src="./profile/top-langs.svg" alt="Most used languages" />
-<img height="165" src="https://streak-stats.demolab.com/?user=Siguatepeque&theme=tokyonight&hide_border=true" alt="GitHub streak stats" />
+<a href="https://github.com/Siguatepeque">
+  <img align="center" height="165" src="./profile/top-langs.svg" alt="Most used languages" />
+</a>
+<a href="https://github.com/Siguatepeque">
+  <img align="center" height="165" src="https://streak-stats.demolab.com/?user=Siguatepeque&theme=tokyonight&hide_border=true" alt="GitHub streak stats" />
+</a>
 
 </div>
