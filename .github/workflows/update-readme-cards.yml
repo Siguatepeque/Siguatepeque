@@ -32,6 +32,7 @@ jobs:
         env:
           GIFOS_GENERAL_USER_NAME: ${{ github.repository_owner }}
         run: |
+          sudo apt-get update && sudo apt-get install -y ffmpeg
           pip install github-readme-terminal
           mkdir -p profile
           python .github/scripts/gen_terminal.py
