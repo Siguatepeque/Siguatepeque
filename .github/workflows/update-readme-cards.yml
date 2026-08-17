@@ -22,21 +22,14 @@ jobs:
           filename: profile/metrics.svg
           base: header
 
-      - name: Generate top languages card (light)
-        uses: stats-organization/github-readme-stats-action@v2
+      - name: Generate languages card
+        uses: lowlighter/metrics@latest
         with:
-          card: top-langs
-          options: username=${{ github.repository_owner }}&layout=compact&hide_border=true
-          path: profile/top-langs.svg
           token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate top languages card (dark)
-        uses: stats-organization/github-readme-stats-action@v2
-        with:
-          card: top-langs
-          options: username=${{ github.repository_owner }}&layout=compact&hide_border=true&theme=dark
-          path: profile/top-langs-dark.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+          filename: profile/languages.svg
+          base: ""
+          plugin_languages: yes
+          plugin_languages_indepth: yes
 
       - name: Commit cards
         run: |

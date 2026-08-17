@@ -5,9 +5,6 @@
 <br/>
 
 <p align="center">
-  <img height="165" src="./profile/metrics.svg" alt="GitHub stats and languages" />
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./profile/top-langs-dark.svg" />
-    <img height="165" src="./profile/top-langs.svg" alt="Most used languages" />
-  </picture>
+  <img height="165" src="./profile/metrics.svg" alt="GitHub stats" />
+  <img height="165" src="./profile/languages.svg" alt="Most used languages" />
 </p>
