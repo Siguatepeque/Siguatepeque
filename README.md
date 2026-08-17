@@ -43,7 +43,7 @@ OPERATING PARAMETERS
 &gt; ACTIVE_LOG ───────────────────────────────────────────
   <a href="https://github.com/Siguatepeque/heds-biomarker-discovery"><b>heds-biomarker-discovery</b></a>  [python]
       Literature-discovery pipeline mining PubMed t…
-      last signal 01 Jan
+      last signal 17 Aug
 ────────────────────────────────────────────────────────
   STATUS  1 experiment running
 </pre>
