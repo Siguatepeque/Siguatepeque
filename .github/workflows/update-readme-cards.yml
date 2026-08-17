@@ -1,44 +1,52 @@
-name: Update README cards
+name: Update profile assets
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 3 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
-jobs:
-  update-cards:
-    runs-on: ubuntu-latest
+concurrency:
+  group: profile-assets
+  cancel-in-progress: true
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
     steps:
       - name: Check out default branch
         uses: actions/checkout@v6
         with:
           ref: ${{ github.event.repository.default_branch }}
 
-      - name: Create profile directory
-        run: mkdir -p profile
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install generator
+        run: pip install github-readme-terminal==0.0.3
 
       - name: Generate top languages card
-        uses: stats-organization/github-readme-stats-action@v2
-        with:
-          card: top-langs
-          options: username=${{ github.repository_owner }}&hide_border=true&layout=compact&bg_color=010409&title_color=7ee787&text_color=c9d1d9&icon_color=7ee787&card_width=440
-          path: profile/top-langs.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python .github/scripts/gen_top_langs.py
 
-      - name: Commit and push changed cards
+      - name: Generate terminal GIF
+        run: python .github/scripts/gen_profile_gif.py
+
+      - name: Commit changed assets
         env:
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add profile/top-langs.svg
+          git add profile/top-langs.svg output.gif
           if git diff --cached --quiet; then
-            echo "README cards are unchanged."
+            echo "profile assets are unchanged."
             exit 0
           fi
-          git commit -m "Update README cards"
+          git commit -m "Update profile assets"
           git push origin "HEAD:${DEFAULT_BRANCH}"
