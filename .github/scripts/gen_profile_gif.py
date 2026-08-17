@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Generate the terminal boot GIF for the profile README (gifos / github-readme-terminal).
 
-Widescreen (640x264, ~2.4:1) so it reads as a terminal window, ~10s at 14 fps,
-plays ONCE and settles on the final frame. Sequence: boot banner + progress bar,
-whoami, neofetch, cat future.txt, exit. Deterministic (seeded RNG, fixed speeds)
-so CI regeneration is byte-identical.
+Widescreen (640x264, ~2.4:1) so it reads as a terminal window, ~12s at 14 fps,
+plays ONCE and settles on the final frame. Sequence: boot banner, whoami,
+neofetch, cat larp_manifesto.txt, tree, exit. Deterministic (seeded RNG, fixed
+speeds) so CI regeneration is byte-identical.
 
 Writes ~/.config/gifos/ TOMLs before importing gifos (config read at import time).
 Output: ./output.gif in the repo root (CWD must be repo root).
@@ -12,7 +12,6 @@ Output: ./output.gif in the repo root (CWD must be repo root).
 import os
 import pathlib
 import random
-import sys
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
 os.chdir(REPO_ROOT)
@@ -41,29 +40,29 @@ output_gif_name = "output"
 
 (cfgdir / "ansi_escape_colors.toml").write_text(
     """[hn]
-        [hn.default_colors]
-        fg = "#c9d1d9"
-        bg = "#010409"
+    [hn.default_colors]
+    fg = "#c9d1d9"
+    bg = "#010409"
 
-        [hn.normal_colors]
-        black = "#161b22"
-        red = "#f85149"
-        green = "#7ee787"
-        yellow = "#d29922"
-        blue = "#58a6ff"
-        magenta = "#bc8cff"
-        cyan = "#39c5cf"
-        white = "#c9d1d9"
+    [hn.normal_colors]
+    black = "#161b22"
+    red = "#f85149"
+    green = "#7ee787"
+    yellow = "#d29922"
+    blue = "#58a6ff"
+    magenta = "#bc8cff"
+    cyan = "#39c5cf"
+    white = "#c9d1d9"
 
-        [hn.bright_colors]
-        black = "#30363d"
-        red = "#ff7b72"
-        green = "#7ee787"
-        yellow = "#e3b341"
-        blue = "#79c0ff"
-        magenta = "#d2a8ff"
-        cyan = "#56d4dd"
-        white = "#f0f6fc"
+    [hn.bright_colors]
+    black = "#30363d"
+    red = "#ff7b72"
+    green = "#7ee787"
+    yellow = "#e3b341"
+    blue = "#79c0ff"
+    magenta = "#d2a8ff"
+    cyan = "#56d4dd"
+    white = "#f0f6fc"
 """,
     encoding="utf-8",
 )
@@ -98,7 +97,8 @@ from gifos.gifos import Terminal  # noqa: E402  (config must exist first)
 
 G = "\\x1b[92m"   # bright green
 Y = "\\x1b[93m"   # bright yellow
-R = "\\x1b[91m"   # bright red
+C = "\\x1b[96m"   # bright cyan
+M = "\\x1b[95m"   # bright magenta
 D = "\\x1b[90m"   # bright black (dim)
 W = "\\x1b[0m"    # reset
 
@@ -106,15 +106,15 @@ t = Terminal(width=640, height=264, xpad=14, ypad=12)
 t.set_fps(14)
 t.set_prompt(f"{G}siguatepeque{W}@{Y}github{W}:~$ ")
 
-SPEED = 3  # typing speed: frames per char
+SPEED = 2  # typing speed: frames per char
 
 # -- boot ---------------------------------------------------------------------
 t.gen_text(f"{D}booting siguatepeque@github ...{W}", 1)
 t.gen_text(f"[{G}#################{W}------------------] 50%", 2)
 t.gen_text(f"{D}kernel: hEDS 1.0 (running on vibes){W}", 3)
 t.gen_text(f"{D}mounting /home/siguatepeque ... {G}done{W}", 4)
-t.gen_text(f"{D}starting network services ... {G}done{W}", 5)
-t.clone_frame(12)
+t.gen_text(f"{D}loading larp modules ... {G}ok{W}", 5)
+t.clone_frame(7)
 
 # -- scroll to a clean slate --------------------------------------------------
 t.scroll_up(6)
@@ -129,29 +129,62 @@ t.clone_frame(4)
 t.gen_prompt(3)
 t.gen_typing_text("neofetch", 3, contin=True, speed=SPEED)
 t.gen_text([
-    f"{G}~~~~~~{W}        siguatepeque@github",
-    f"{G}~    ~{W}        -------------------",
-    f"{G}~~~~~~{W}        os:     honduras",
-    "                age:    20",
-    "                cond:   hEDS",
-    "                bio:    some computer stuff,",
-    "                        some medical stuff",
+    f"{G}~~~~~~{W}        {C}siguatepeque@github{W}",
+    f"{G}~    ~{W}        {D}-------------------{W}",
+    f"{G}~~~~~~{W}        {Y}os:{W}      honduras",
+    f"                {Y}age:{W}     20",
+    f"                {Y}cond:{W}    hEDS",
+    f"                {Y}bio:{W}     some computer stuff,",
+    f"                        some medical stuff",
+    f"                {Y}status:{W}  larping as a real dev",
     "",
 ], 4)
-t.clone_frame(18)
+t.clone_frame(10)
 
-# -- $ cat future.txt ---------------------------------------------------------
+# -- $ cat larp_manifesto.txt -------------------------------------------------
 t.scroll_up(10)
 t.gen_prompt(1)
-t.gen_typing_text("cat future.txt", 1, contin=True, speed=SPEED)
+t.gen_typing_text("cat larp_manifesto.txt", 1, contin=True, speed=SPEED)
 t.gen_text([
-    f"{G}future biomedical eng,{W}",
-    f"{G}larping on github{W}",
+    f"{M}> fake it till you make it{W}",
+    f"{M}> ship code like you belong here{W}",
+    f"{M}> biomedical eng in progress{W}",
+    f"{M}> the larp is the point{W}",
 ], 2, count=2)
-t.clone_frame(14)
+t.clone_frame(10)
 
-# -- $ exit -------------------------------------------------------------------
-t.scroll_up(5)
+# -- $ tree (live repo index) -------------------------------------------------
+t.scroll_up(6)
+t.gen_prompt(1)
+t.gen_typing_text("gh repo list --limit 4", 1, contin=True, speed=SPEED)
+
+_repos = ["heds-biomarker-discovery", "girlfriend-day-emily", "detector-caidas", "luna-cycle-tracker (private)"]
+try:
+    import json as _json
+    import urllib.request as _u
+
+    _req = _u.Request(
+        "https://api.github.com/users/Siguatepeque/repos?per_page=100&sort=pushed&direction=desc",
+        headers={"Accept": "application/vnd.github+json", "User-Agent": "profile-gif"},
+    )
+    if os.environ.get("GITHUB_TOKEN"):
+        _req.add_header("Authorization", f"Bearer {os.environ['GITHUB_TOKEN']}")
+    with _u.urlopen(_req, timeout=20) as _r:
+        _all = [x["name"] + (" (private)" if x.get("private") else "") for x in _json.loads(_r.read().decode()) if not x.get("fork") and x["name"] != "Siguatepeque"]
+    if _all:
+        _repos = _all[:4]
+except Exception:
+    pass  # offline CI: fall back to last-known list
+
+_pad = max(len(r) for r in _repos) + 2
+t.gen_text(
+    [f"{C}{name.ljust(_pad)}{W}{D}|{W}" for name in _repos] + [""],
+    2, count=2,
+)
+t.clone_frame(10)
+
+# -- $ exit --------------------------------------------------------------------
+t.scroll_up(7)
 t.gen_prompt(1)
 t.gen_typing_text("exit", 1, contin=True, speed=SPEED)
 t.gen_text(f"{Y}connection closed.{W}", 2, count=6)
