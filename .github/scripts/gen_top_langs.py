@@ -72,33 +72,56 @@ def main():
 
     n = len(shares)
     width = 440
-    bar_h = 8
-    bar_top = 48
-    seg_gap = 2
-    seg_w = (width - 40 - seg_gap * (n - 1)) / n
+    height = 150
+    MONO = "ui-monospace,SFMono-Regular,Consolas,'Cascadia Mono',monospace"
+    LANG_C = {"Python": "#3572A5", "TypeScript": "#3178c6", "JavaScript": "#f1e05a",
+              "HTML": "#e34c26", "CSS": "#563d7c", "Jupyter Notebook": "#DA5B0B",
+              "Rust": "#dea584", "Go": "#00ADD8", "Shell": "#89e051"}
+
+    # stacked proportional bar
+    bar_top = 56
+    bar_h = 12
+    bar_x = 20
+    bar_w = width - 40
+    x = bar_x
     segs = []
-    opacity = [1.0, 0.78, 0.58, 0.42, 0.3]
-    x = 20
     for i, (lang, pct) in enumerate(shares):
-        w = seg_w * (pct / 100) * 0.9 + seg_w * 0.1  # floor so tiny shares stay visible
+        w = max(2.0, bar_w * pct / 100)
+        color = LANG_C.get(lang, "#7ee787")
         segs.append(
             f'<rect x="{x:.1f}" y="{bar_top}" width="{w:.1f}" height="{bar_h}" '
-            f'rx="3" fill="#7ee787" opacity="{opacity[i % len(opacity)]}"/>'
+            f'rx="2" fill="{color}"/>'
         )
-        x += seg_w
+        x += w
+
+    # legend rows
+    legend = []
+    ly = bar_top + 34
+    for lang, pct in shares:
+        color = LANG_C.get(lang, "#7ee787")
+        legend.append(
+            f'<circle cx="26" cy="{ly-4}" r="4" fill="{color}"/>'
+            f'<text x="38" y="{ly}" font-family="{MONO}" font-size="12" fill="#c9d1d9">{esc(lang)}</text>'
+            f'<text x="{width-24}" y="{ly}" text-anchor="end" font-family="{MONO}" font-size="12" fill="#8b949e">{pct:.1f}%</text>'
+        )
+        ly += 18
+    height = ly + 6
 
     svg = (
-        '<svg width="440" height="100" viewBox="0 0 440 100" '
+        f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" '
         'xmlns="http://www.w3.org/2000/svg" role="img" '
         'aria-label="most used languages">'
         "<title>most used languages</title>"
-        '<rect width="440" height="100" rx="6" fill="#010409"/>'
-        '<text x="20" y="28" font-family="Segoe UI, Ubuntu, Sans-Serif" '
-        'font-size="16" font-weight="600" fill="#7ee787">most used languages</text>'
+        f'<rect width="{width}" height="{height}" rx="10" fill="#010409" stroke="#30363d"/>'
+        # window chrome
+        '<circle cx="28" cy="24" r="5" fill="#f85149"/>'
+        '<circle cx="44" cy="24" r="5" fill="#d29922"/>'
+        '<circle cx="60" cy="24" r="5" fill="#7ee787"/>'
+        f'<text x="80" y="28" font-family="{MONO}" font-size="13" fill="#7ee787">$ tokei --languages</text>'
+        f'<line x1="20" y1="42" x2="{width-20}" y2="42" stroke="#21262d"/>'
         + "".join(segs)
-        + f'<text x="20" y="{bar_top + bar_h + 18}" font-family="Segoe UI, Ubuntu, Sans-Serif" '
-        f'font-size="12" fill="#8b949e">{esc(labels)}</text>'
-        "</svg>"
+        + "".join(legend)
+        + "</svg>"
     )
     pathlib.Path("profile").mkdir(exist_ok=True)
     pathlib.Path("profile/top-langs.svg").write_text(svg, encoding="utf-8")
